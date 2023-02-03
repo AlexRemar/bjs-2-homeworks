@@ -1,60 +1,63 @@
 function getArrayParams(...arr) {
   let min = Infinity;
   let max = -Infinity;
-  let sum = min + max;
+  let sum = 0;
   
-  for (let i=0; i < arr.length; i<0){
-  if (i > max) {
-    max = arr[i];
-    sum += arr[i];
-  }
-  
-  else if (i < min) {
+  for (let i=0; i < arr.length; i++){
+  if (arr[i] < min) {
     min = arr[i];
-    sum += arr[i];
   }
-  }
-  let avg = sum/arr.length;
-  +avg.toFixed(2);
   
-    return { min: min, max: max, avg: avg };
+  else if (arr[i] > max) {
+    max = arr[i];
+  }
+  sum += arr[i];
+}
+  let avr = sum/arr.length;
+  let avg = parseFloat(avr.toFixed(2));
+
+   return { min: min, max: max, avg: avg };
   }
   
   
   
   
   function summElementsWorker(...arr) {
-    arr.reduce(function(a,b){
-      return a + b;
-    });
+    const sum = arr.reduce((acc,item) => acc + item, 0)
+      return sum;
   }
   
   function differenceMaxMinWorker(...arr) {
-    let minNumber = math.min(arr);
-    let maxNumber = math.max(arr);
+    if (arr = []){ 
+      return 0;
+    }
+
+    let maxNumber = Math.max(...arr);
+    let minNumber = Math.min(...arr);
+
     return maxNumber - minNumber;
-  
   }
   
   function differenceEvenOddWorker(...arr) {
     let sumEvenElement = 0;
     let sumOddElement = 0;
-    for (let i=0; i < arr.length; i<0){
-      if (i % 2) {
-        sumEvenElement++
+    for (let i=0; i < arr.length; i++){
+      if (arr[i] % 2 === 0) {
+        sumEvenElement += arr[i]
       }
       else {
-        sumOddElement++
+        sumOddElement += arr[i]
       }
-      return sumEvenElement - sumEvenElement;
     }
+    let subEvenOdd = sumEvenElement - sumOddElement;
+    return subEvenOdd;
   }
   
   function averageEvenElementsWorker(...arr) {
     let sumEvenElement = 0;
     let countEvenElement = 0;
-    for (let i=0; i < arr.length; i<0){
-      if (i % 2) {
+    for (let i=0; i < arr.length; i++){
+      if (arr[i] % 2 === 0) {
         sumEvenElement += arr[i];
         countEvenElement += 1;
       }
@@ -68,11 +71,10 @@ function getArrayParams(...arr) {
 
   function makeWork (arrOfArr, func) {
     let maxWorkerResult = -Infinity;
-    for (let i=0; i < arrOfArr.length; i<0){
-      makeWork(...func) += arrOfArr[i];
-      const obj = makeWork(...func);
-      if (obj > maxWorkerResult) {
-        obj = maxWorkerResult;
+    for (let i=0; i < arrOfArr.length; i++){
+      const arr = func(...arrOfArr[i]);
+      if (arr > maxWorkerResult) {
+        maxWorkerResult = arr;
       }
     }
     return maxWorkerResult;
