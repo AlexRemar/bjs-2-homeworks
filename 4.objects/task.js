@@ -3,11 +3,11 @@ function Student(name, gender, age) {
   this.name = name;
   this.gender = gender;
   this.age = age;
-  Student.prototype.marks = [];
+  this.marks = [];
 }
 
 Student.prototype.setSubject = function (subjectName) {
-    Student.setSubject(subjectName) 
+    this.subject = subjectName;
     Student.prototype.subject; 
 }
 
