@@ -27,18 +27,29 @@ class Triangle{
     }
 }
 
-
-
-
 get perimeter() {return (this.sideA + this.sideB + this.sideC)
 }
-get area() {let sqare = (Math.sqrt((this.perimeter/2)*((this.perimeter/2)
--this.sideA)*((this.perimeter/2)-this.sideB)*((this.perimeter/2)
--this.sideC)))
+get area() {let sqare = (Math.sqrt((this.perimeter/2)*
+                        ((this.perimeter/2)-this.sideA)*
+                        ((this.perimeter/2)-this.sideB)*
+                        ((this.perimeter/2)-this.sideC)))
 return +sqare.toFixed(3);
 }
-
-
-    
 }
 
+function getTriangle(sideA,sideB,sideC){
+try {
+  let triangle = new Triangle(sideA,sideB,sideC)
+  return triangle;
+} catch(error){
+    let newObj = {
+    get perimeter() {
+        return 'Ошибка! Треугольник не существует'
+    },
+    get area() {
+        return 'Ошибка! Треугольник не существует'
+    }
+}
+return newObj;
+}
+}
