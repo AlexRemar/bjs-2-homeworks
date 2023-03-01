@@ -25,7 +25,7 @@ Student.prototype.getAverage = function () {
     return 0;
   }
   
-  else if (this.hasOwnProperty('marks')){
+  else {
     let sum = 0; 
   for (let i = 0; i < this.marks.length; i++){ 
       sum += this.marks[i]; 
